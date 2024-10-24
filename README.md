@@ -1,4 +1,3 @@
-# 💤 LazyVim
+# My Dotfiles
 
-A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
-Refer to the [documentation](https://lazyvim.github.io/installation) to get started.
+It's my first dotfiles config, I mainly used the LazyVim stater project.
