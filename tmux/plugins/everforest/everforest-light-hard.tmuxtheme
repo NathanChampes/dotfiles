@@ -1,0 +1,32 @@
+# vim: set filetype=sh:
+# NOTE: you can use vars with $<var> and ${<var>} as long as the str is double quoted: ""
+# WARNING: hex colors can't contain capital letters
+
+# --> Everforest Light Hard
+thm_bg_dim="#f2efdf"
+thm_bg0="#fffbef"
+thm_bg1="#f8f5e4"
+thm_bg2="#f2efdf"
+thm_bg3="#edeada"
+thm_bg4="#e8e5d5"
+thm_bg5="#bec5b2"
+thm_bg_visual="#f0f2d4"
+thm_bg_red="#ffe7de"
+thm_bg_green="#f3f5d9"
+thm_bg_blue="#ecf5ed"
+thm_bg_yellow="#fef2d5"
+
+thm_fg="#5c6a72"
+thm_red="#f85552"
+thm_orange="#f57d26"
+thm_yellow="#dfa000"
+thm_green="#8da101"
+thm_aqua="#35a77c"
+thm_blue="#3a94c5"
+thm_purple="#df69ba"
+thm_grey0="#a6b0a0"
+thm_grey1="#939f91"
+thm_grey2="#829181"
+thm_statusline1="#93b259"
+thm_statusline2="#708089"
+thm_statusline3="#e66868"

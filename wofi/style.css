@@ -1,0 +1,41 @@
+window {
+  margin: 0px;
+  border: none;
+  background-color: #344539;
+}
+
+#input {
+  margin: 5px;
+  border: none;
+  color: #ffffff;
+  background-color: #3d603c;
+}
+
+#inner-box {
+  margin: 5px;
+  border: none;
+  background-color: #344539;
+}
+
+#outer-box {
+  margin: 5px;
+  border: none;
+  background-color: #344539;
+}
+
+#scroll {
+  margin: 0px;
+  border: none;
+}
+
+#text {
+  font-family: Cantarell Semibold;
+  font-size: 20px;
+  margin: 5px;
+  border: none;
+  color: #ffffff;
+}
+
+#entry:selected {
+  background-color: #575f3b;
+}

@@ -1,0 +1,253 @@
+# On défini ici la touche 'windows' comme la principale
+set $mod Mod4
+
+#Définition de la police mais à changer 
+#NOTE: a changer
+font pango:monospace 8
+
+exec --no-startup-id dex --autostart --environment sway
+exec --no-startup-id xss-lock --transfer-sleep-lock -- swaylock --nofork
+exec --no-startup-id nm-applet
+exec --no-startup-id dunst
+exec --no-startup-id picom
+exec --no-startup-id xautolock -corners -000 -time 10 -locker 'swaylock -c 000000' &
+exec_always --no-startup-id waybar
+# Pour que emacs s'ouvre en mode daemon au démarrage
+exec --no-startup-id /usr/bin/emacs --daemon
+
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+floating_modifier $mod
+
+# Start a terminal
+bindsym $mod+Return exec /usr/bin/kitty
+
+# Kill focused window
+bindsym $mod+a exec "swaymsg kill; sleep 1"
+
+# Change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+m focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+m move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Split layout
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+# Fullscreen
+bindsym $mod+f fullscreen toggle
+
+# Layouts
+bindsym $mod+s layout stacking
+bindsym $mod+e layout toggle split
+
+# Floating mode
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+
+# Parent focus
+bindsym $mod+q focus parent
+
+# Workspaces
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+bindsym $mod+ampersand workspace number $ws1
+bindsym $mod+eacute workspace number $ws2
+bindsym $mod+quotedbl workspace number $ws3
+bindsym $mod+apostrophe workspace number $ws4
+bindsym $mod+parenleft workspace number $ws5
+bindsym $mod+minus workspace number $ws6
+bindsym $mod+egrave workspace number $ws7
+bindsym $mod+underscore workspace number $ws8
+bindsym $mod+ccedilla workspace number $ws9
+bindsym $mod+agrave workspace number $ws10
+
+# Move container to workspace
+bindsym $mod+Shift+ampersand move container to workspace number $ws1
+bindsym $mod+Shift+eacute move container to workspace number $ws2
+bindsym $mod+Shift+quotedbl move container to workspace number $ws3
+bindsym $mod+Shift+apostrophe move container to workspace number $ws4
+bindsym $mod+Shift+parenleft move container to workspace number $ws5
+bindsym $mod+Shift+minus move container to workspace number $ws6
+bindsym $mod+Shift+egrave move container to workspace number $ws7
+bindsym $mod+Shift+underscore move container to workspace number $ws8
+bindsym $mod+Shift+ccedilla move container to workspace number $ws9
+bindsym $mod+Shift+agrave move container to workspace number $ws10
+
+bindsym $mod+x move workspace to output right
+bindsym $mod+w move workspace to output left
+
+bindsym $mod+Shift+c exec pkill waybar; reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "swaynag -t warning -m 'Do you really want to exit Sway?' -B 'Yes' 'swaymsg exit'"
+
+# Resize mode
+mode "resize" {
+    bindsym j resize shrink width 10px
+    bindsym k resize grow height 10px
+    bindsym l resize shrink height 10px
+    bindsym m resize grow width 10px
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Screenshots
+bindsym $mod+Shift+s exec grim -g "$(slurp)" - | tee ~/Images/Screen/screenshot-$(date +'%Y%m%d-%H%M%S').png | wl-copy
+
+# Disable window titlebars
+for_window [class="^.*"] border pixel 2
+
+# Set gaps
+gaps inner 7
+gaps outer 2
+smart_borders on
+
+# Start wallpaper
+exec_always swaybg -i /home/manchoy/Images/desktop2.jpg -m fill
+
+# Brightness control
+bindsym XF86MonBrightnessDown exec brightnessctl s 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl s +5%
+
+# Autostart browser in workspace 1
+exec --no-startup-id swaymsg 'workspace 1:Web; exec zen-browser'
+exec --no-startup-id swaymsg 'workspace 2:Nvim; exec kitty -e nvim'
+exec --no-startup-id swaymsg 'workspace 6:Spotify; exec spotify'
+
+# Status ba
+bar {
+    swaybar_command i3status
+}
+
+# Keyboard layout
+input * {
+    xkb_layout fr
+    xkb_variant azerty
+    xkb_numlock enabled
+}
+
+# Ouvrir le truc des applications
+bindsym $mod+z exec wofi --show drun 
+
+exec xdg-desktop-portal &
+exec xdg-desktop-portal-wlr &
+
+corner_radius 10
+
+# File manager
+bindsym $mod+n exec thunar
+bindsym $mod+Shift+n exec kitty -e vifm
+exec --no-startup-id "xdg-mime default vifm.desktop inode/directory"
+
+# XDG Desktop Portal
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec --no-startup-id /usr/libexec/xdg-desktop-portal
+exec --no-startup-id /usr/libexec/xdg-desktop-portal-wlr
+exec --no-startup-id /usr/libexec/xdg-desktop-portal-gtk
+exec --no-startup-id "xdg-mime default vifm.desktop inode/directory application/x-gnome-saved-search"
+
+# Screen scaling
+output eDP-1 scale 1.25  
+output HDMI-A-1 scale 1  
+workspace_layout default
+
+# Force shared workspaces between monitors
+workspace 1 output eDP-1 HDMI-A-1
+# workspace 2 output eDP-1 H-A-1
+workspace 3 output eDP-1 HDMI-A-1
+workspace 4 output eDP-1 HDMI-A-1
+workspace 5 output eDP-1 HDMI-A-1
+workspace 6 output eDP-1 HDMI-A-1
+workspace 7 output eDP-1 HDMI-A-1
+workspace 8 output eDP-1 HDMI-A-1
+workspace 9 output eDP-1 HDMI-A-1
+workspace 10 output eDP-1 HDMI-A-1
+
+# Image viewer
+bindsym $mod+i exec feh --auto-zoom --scale-down --start-at ~/Images
+
+# Color scheme
+set $dark_slate #344539
+set $dark_moss #575F3B
+set $chamoisee #9C775B
+set $sage #BBC1A0
+set $lion #A89172
+
+# Window colors
+client.focused          $dark_moss $dark_moss $sage    $chamoisee $dark_moss
+client.focused_inactive $dark_slate $dark_slate $lion  $dark_slate $dark_slate
+client.unfocused       $dark_slate $dark_slate $lion  $dark_slate $dark_slate
+client.urgent          $chamoisee $chamoisee $sage    $chamoisee $chamoisee
+
+# Update border and gaps
+default_border pixel 2
+default_floating_border pixel 2
+gaps inner 10
+gaps outer 5
+smart_borders on
+
+# Update lock screen
+exec --no-startup-id xautolock -corners -000 -time 10 -locker 'swaylock -c 344539' &
+
+# Screen configuration
+output eDP-1 {
+    scale 1.25
+    scale_filter smart
+    subpixel rgb
+}
+output HDMI-A-1 {
+    scale 1
+    scale_filter smart
+    subpixel rgb
+}
+
+# Force Xwayland DPI for legacy apps
+exec xrandr --dpi 120
+
+# Set global scale factor for XWayland
+exec xsettingsd -c ~/.config/sway/xsettingsd.conf
+
+input "10182:3397:VEN_27C6:00_27C6:0D45_Touchpad" {
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+}
+
+bindsym $mod+d exec emacs

@@ -1,0 +1,17 @@
+/* vim:ft=css */
+configuration {
+width: 900;
+lines: 15;
+columns: 1;
+font: "Open Sans 11";
+bw: 1;
+show-icons: true;
+terminal: "kitty";
+drun-match-fields: "name,generic,exec,categories";
+levenshtein-sort: true;
+sidebar-mode: true;
+
+matching: "fuzzy";
+combi-hide-mode-prefix: true;
+}
+@theme "~/.config/rofi/gruvbox-dark-hard.rasi"
