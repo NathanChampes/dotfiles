@@ -1,0 +1,43 @@
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+*.sublime-*
+
+.bash_history
+.zsh_history
+.zsh_sessions/
+*.log
+
+.npm/
+.yarn/
+node_modules/
+
+
+.ssh/
+.gnupg/
+.aws/
+.env
+*.pem
+*.key
+.tokens
+.netrc
+
+# On va éviter de push du cache
+.cache/
+.local/share/
+*.zwc
+*.pyc
+__pycache__/
+
+# Pas besoin de push ça 
+.vim/plugged/
+.vim/autoload/plug.vim
+.config/nvim/plugged/
+.config/git/credentials
+
+# les fichiers temporaires
+tmp/
+*.tmp
+*.temp

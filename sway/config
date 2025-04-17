@@ -139,7 +139,7 @@ gaps outer 2
 smart_borders on
 
 # Start wallpaper
-exec_always swaybg -i /home/manchoy/Images/desktop2.jpg -m fill
+exec_always swaybg -i ~/.config/wallpaper/desktop2.jpg -m fill
 
 # Brightness control
 bindsym XF86MonBrightnessDown exec brightnessctl s 5%-
