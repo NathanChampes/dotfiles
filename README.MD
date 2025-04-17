@@ -76,6 +76,7 @@ J’ai également utilisé son grand frère, Rofi, mais je dois dire que pour un
 
 Je l’ai configuré pour qu’il s’intègre parfaitement à mes thèmes de couleurs et à mon fond d’écran, afin de garder une cohérence visuelle dans mon environnement.
 
+---
 
 ### 🖼️ Wallpaper (`wallpaper`)
 
