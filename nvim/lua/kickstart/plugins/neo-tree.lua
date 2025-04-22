@@ -29,6 +29,16 @@ return {
 			},
 		})
 
+		opts.event_handlers = {
+			{
+				event = "file_opened",
+				handler = function()
+					-- En gros je veux que lorsque j'ouvre un fichier, neotree se ferme
+					require("neo-tree.command").execute({ action = "close" })
+				end,
+			},
+		}
+
 		return opts
 	end,
 }

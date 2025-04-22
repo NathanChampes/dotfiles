@@ -378,36 +378,34 @@ require("lazy").setup({
 				-- ts_ls = {},
 
 				lua_ls = {
-					-- cmd = { ... },
-					-- filetypes = { ... },
-					-- capabilities = {},
 					settings = {
 						Lua = {
 							completion = {
 								callSnippet = "Replace",
 							},
-							-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-							-- diagnostics = { disable = { 'missing-fields' } },
-						},
-						workspace = {
-							checkThirdParty = false,
-							library = {
-								[vim.env.VIMRUNTIME] = true,
-								["${3rd}/luv/library"] = true,
-								["${3rd}/busted/library"] = true,
-								[vim.fn.expand("~/.config/nvim/lua")] = true,
+							workspace = {
+								checkThirdParty = false, -- Désactive les vérifications inutiles
+								library = {
+									[vim.env.VIMRUNTIME] = true,
+									["${3rd}/luv/library"] = true,
+									["${3rd}/busted/library"] = true,
+									[vim.fn.expand("~/.config/nvim/lua")] = true,
+								},
+								ignoreDir = { -- Répertoires à ignorer
+									".git",
+									"node_modules",
+									"site",
+									"pack",
+									"lazy",
+									"opt",
+									"plugged",
+									"backups", -- Exemple de répertoire volumineux
+								},
+								maxPreload = 2000, -- Limite le nombre de fichiers préchargés
+								preloadFileSize = 100, -- Limite la taille des fichiers préchargés
 							},
-							ignoreDir = {
-								".git",
-								"node_modules",
-								"site",
-								"pack",
-								"lazy",
-								"opt",
-								"plugged",
-							},
+							telemetry = { enable = false }, -- Désactive la télémétrie
 						},
-						telemetry = { enable = false },
 					},
 				},
 			}

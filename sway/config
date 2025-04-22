@@ -4,10 +4,10 @@ set $mod Mod4
 # Apparence et configuration générale
 font pango:monospace 8
 corner_radius 10
-default_border pixel 2
+default_border pixel 4
 default_floating_border pixel 2
 gaps inner 4
-gaps outer 1
+gaps outer 2
 smart_borders on
 
 # Schéma de couleurs
@@ -18,10 +18,10 @@ set $sage #BBC1A0
 set $lion #A89172
 
 # Couleurs des fenêtres
-client.focused          $dark_moss $dark_moss $sage    $chamoisee $dark_moss
-client.focused_inactive $dark_slate $dark_slate $lion  $dark_slate $dark_slate
-client.unfocused        $dark_slate $dark_slate $lion  $dark_slate $dark_slate
-client.urgent           $chamoisee $chamoisee $sage    $chamoisee $chamoisee
+client.focused          #a7c080 #a7c080 #d8caac #a7c080 #a7c080
+client.focused_inactive #3a4b46 #3a4b46 #d3c6aa #3a4b46 #3a4b46
+client.unfocused        #3a4b46 #3a4b46 #d3c6aa #3a4b46 #3a4b46
+client.urgent           #e67e80 #e67e80 #d8caac #e67e80 #e67e80
 
 # Configuration des périphériques d'entrée
 input * {
@@ -110,27 +110,21 @@ bindsym $mod+Shift+x exec swaymsg output eDP-1 disable
 bindsym $mod+Shift+w exec swaymsg output eDP-1 enable
 
 # Navigation
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+m focus right
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # Déplacement des fenêtres
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+m move right
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
 
 # Disposition des fenêtres
-bindsym $mod+h split h
+# Pour split horrizontalement du coup ça va être m à la place de h pour respecter les vim bindings
+bindsym $mod+m split h
 bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 bindsym $mod+s layout stacking
