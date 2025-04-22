@@ -147,7 +147,7 @@ bindsym XF86MonBrightnessUp exec brightnessctl s +5%
 
 # Autostart browser in workspace 1
 exec --no-startup-id swaymsg 'workspace 1:Web; exec zen-browser'
-exec --no-startup-id swaymsg 'workspace 2:Nvim; exec kitty -e nvim'
+exec --no-startup-id swaymsg 'workspace 2:Nvim; exec kitty -e tmux'
 exec --no-startup-id swaymsg 'workspace 6:Spotify; exec spotify'
 
 # Status ba
@@ -251,3 +251,5 @@ input "10182:3397:VEN_27C6:00_27C6:0D45_Touchpad" {
 }
 
 bindsym $mod+d exec emacs
+
+bindsym $mod+Shift+x exec swaymsg output edp-1 disable
