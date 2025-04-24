@@ -50,4 +50,17 @@ return {
 		"OXY2DEV/markview.nvim",
 		lazy = false,
 	},
+	{
+		"folke/zen-mode.nvim",
+		opts = {},
+	},
+	{
+		"barklan/capslock.nvim",
+		lazy = true,
+		keys = {
+			{ "<C-l>", "<Plug>CapsLockToggle", mode = { "i", "c" } },
+			{ "<leader>c", "<Plug>CapsLockToggle", mode = { "n" } },
+		},
+		config = true,
+	},
 }

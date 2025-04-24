@@ -21,6 +21,7 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 
 -- Juste un petit raccourci pour save
 vim.keymap.set("n", "<C-s>", "<cmd>w<CR>", { desc = "Fait en sorte que Ctrl + S sauvegarde" })
+vim.keymap.set("i", "<C-s>", "<Esc><cmd>w<CR>", { desc = "Fait en sorte que Ctrl + S sauvegarde" })
 
 -- Juste parce que les claviers français c'est un peu chiant pour les déplacement rapide
 vim.keymap.set("n", "&", "1")
