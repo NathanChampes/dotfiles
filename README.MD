@@ -113,4 +113,19 @@ Le dépôt inclut un script bash pour faciliter la mise à jour des dotfiles :
 
 ## Captures d'écran
 
-TODO: Ajouter des captures d'écrans pour illustrer mes configurations
+### 📝 Neovim (`nvim`)
+
+
+### 🔀 Tmux (`tmux`)
+
+
+### 🧩 Sway (`sway`)
+
+
+### 🐱 Kitty (`kitty`)
+
+
+### 📊 Waybar (`waybar`)
+
+
+### 🚀 Wofi (`wofi`)
