@@ -46,4 +46,7 @@ vim.keymap.set("v", "_", "8")
 vim.keymap.set("v", "ç", "9")
 vim.keymap.set("v", "à", "0")
 
-vim.keymap.set("n", "6", "-")
+-- Juste pour la gestion des buffers
+vim.keymap.set("n", "<leader>bc", "<cmd>:bd <CR>", { desc = "Fermer le buffer actuel" })
+vim.keymap.set("n", "<leader>bn", "<cmd>:bn <CR>", { desc = "On passe au prochain buffer" })
+vim.keymap.set("n", "<leader>bp", "<cmd>:bp <CR>", { desc = "On passe au buffer précedent" })
