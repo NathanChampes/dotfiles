@@ -114,15 +114,12 @@ Le dépôt inclut un script bash pour faciliter la mise à jour des dotfiles :
 ## Captures d'écran
 
 ### 📝 Neovim (`nvim`)
-
+[Image]!(https://private-user-images.githubusercontent.com/119850289/437367543-eb1c0b7c-0559-4a4c-9a56-4962261ab4b7.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDU1NzIwNzQsIm5iZiI6MTc0NTU3MTc3NCwicGF0aCI6Ii8xMTk4NTAyODkvNDM3MzY3NTQzLWViMWMwYjdjLTA1NTktNGE0Yy05YTU2LTQ5NjIyNjFhYjRiNy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNDI1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDQyNVQwOTAyNTRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1mMDY5ZThkMGU0NzEzYTdhMTgzYjMwNDZhOTI3OTk1OGFmNjhiZTMxOTlmZmVkNzEwMTNhOGJmMzkwN2NhMzM1JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.A_MgqsuDLgjYegb9rLIDJBs66pawZgHG1JIlEJX1fbU)
 
 ### 🔀 Tmux (`tmux`)
 
 
 ### 🧩 Sway (`sway`)
-
-
-### 🐱 Kitty (`kitty`)
 
 
 ### 📊 Waybar (`waybar`)
