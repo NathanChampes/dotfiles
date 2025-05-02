@@ -105,7 +105,6 @@ bindsym $mod+z exec wofi --show drun
 bindsym $mod+n exec thunar
 bindsym $mod+Shift+n exec kitty -e vifm
 bindsym $mod+d exec emacs
-bindsym $mod+i exec feh --auto-zoom --scale-down --start-at ~/Images
 bindsym $mod+Shift+x exec swaymsg output eDP-1 disable
 bindsym $mod+Shift+w exec swaymsg output eDP-1 enable
 
@@ -121,17 +120,14 @@ bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-
 # Disposition des fenêtres
 # Pour split horrizontalement du coup ça va être m à la place de h pour respecter les vim bindings
 bindsym $mod+m split h
 bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
-bindsym $mod+s layout stacking
 bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
-bindsym $mod+q focus parent
 
 # Changement d'espace de travail
 bindsym $mod+ampersand workspace number $ws1
@@ -183,6 +179,10 @@ bindsym $mod+r mode "resize"
 
 # Capture d'écran
 bindsym $mod+Shift+s exec grim -g "$(slurp)" - | tee ~/Images/Screen/screenshot-$(date +'%Y%m%d-%H%M%S').png | wl-copy
+
+# Je veux juste pouvoir enlever ou ajouter la waybar sur demande
+bindsym $mod+KP_Add exec waybar &; 
+bindsym $mod+KP_Subtract exec pkill waybar; 
 
 # Contrôle du volume
 set $refresh_i3status killall -SIGUSR1 i3status

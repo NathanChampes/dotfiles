@@ -38,7 +38,7 @@ vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 vim.opt.inccommand = "split"
 
 -- La ligne qui montre ou est le curseur
-vim.opt.cursorline = true
+vim.opt.cursorline = false
 
 -- Le nombre de ligne a garder au dessus et en dessous
 vim.opt.scrolloff = 10
