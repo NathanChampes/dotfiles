@@ -91,7 +91,7 @@ exec_always swaybg -i ~/.config/wallpaper/desktop2.jpg -m fill
 
 # Autostart applications sur des espaces de travail spécifiques
 exec --no-startup-id swaymsg 'workspace 1:Web; exec zen-browser'
-exec --no-startup-id swaymsg 'workspace 2:Nvim; exec kitty -e tmux'
+exec --no-startup-id swaymsg 'workspace 2:Nvim; exec ghostty -e tmux'
 exec --no-startup-id swaymsg 'workspace 6:Spotify; exec spotify'
 
 # Paramètres par défaut
@@ -99,11 +99,11 @@ floating_modifier $mod
 workspace_layout default
 
 # Raccourcis pour les applications
-bindsym $mod+Return exec /usr/bin/kitty
+bindsym $mod+Return exec /usr/bin/ghostty
 bindsym $mod+a exec "swaymsg kill; sleep 1"
 bindsym $mod+z exec wofi --show drun
 bindsym $mod+n exec thunar
-bindsym $mod+Shift+n exec kitty -e vifm
+bindsym $mod+Shift+n exec ghostty -e vifm
 bindsym $mod+d exec emacs
 bindsym $mod+Shift+x exec swaymsg output eDP-1 disable
 bindsym $mod+Shift+w exec swaymsg output eDP-1 enable
