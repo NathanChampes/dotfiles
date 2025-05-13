@@ -1,3 +1,4 @@
+vim.opt.guicursor = ""
 -- See `:help vim.opt`
 vim.opt.number = true
 

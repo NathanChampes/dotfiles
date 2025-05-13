@@ -1,6 +1,6 @@
 #!/bin/bash
 # Copie de mes .dotfiles
-packages=("nvim" "tmux" "sway" "kitty" "waybar" "wofi" "wallpaper")
+packages=("nvim" "tmux" "sway" "kitty" "waybar" "wofi" "wallpaper" "ghostty")
 for string in "${packages[@]}"; do 
     if [ -d "./$string" ]; then
         rm -rf "./$string"

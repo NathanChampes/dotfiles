@@ -9,6 +9,7 @@ default_floating_border pixel 2
 gaps inner 4
 gaps outer 2
 smart_borders on
+blur enable
 
 # Schéma de couleurs
 set $dark_slate #344539
@@ -30,6 +31,7 @@ input * {
     xkb_numlock enabled
 }
 
+# Config touchpad
 input "10182:3397:VEN_27C6:00_27C6:0D45_Touchpad" {
     dwt enabled
     tap enabled
@@ -75,36 +77,38 @@ set $ws9 "9"
 set $ws10 "10"
 
 # Autostart de programmes
+exec_always --no-startup-id waybar
 exec --no-startup-id dex --autostart --environment sway
 exec --no-startup-id nm-applet
 exec --no-startup-id dunst
 exec --no-startup-id xautolock -corners -000 -time 10 -locker 'swaylock -c 344539' &
-exec_always --no-startup-id waybar
 exec --no-startup-id /usr/bin/emacs --daemon
 exec --no-startup-id dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec --no-startup-id /usr/libexec/xdg-desktop-portal
 exec --no-startup-id /usr/libexec/xdg-desktop-portal-wlr
 exec --no-startup-id /usr/libexec/xdg-desktop-portal-gtk
 
-# Fonds d'écran
-exec_always swaybg -i ~/.config/wallpaper/desktop2.jpg -m fill
-
 # Autostart applications sur des espaces de travail spécifiques
-exec --no-startup-id swaymsg 'workspace 1:Web; exec zen-browser'
+exec --no-startup-id swaymsg 'workspace 1:Web; exec zen-browser --restore-session'
 exec --no-startup-id swaymsg 'workspace 2:Nvim; exec ghostty -e tmux'
 exec --no-startup-id swaymsg 'workspace 6:Spotify; exec spotify'
+
+# Fonds d'écran
+exec_always swaybg -i ~/.config/wallpaper/desktop2.jpg -m fill
 
 # Paramètres par défaut
 floating_modifier $mod
 workspace_layout default
 
 # Raccourcis pour les applications
-bindsym $mod+Return exec /usr/bin/ghostty
+bindsym $mod+Return exec ghostty
 bindsym $mod+a exec "swaymsg kill; sleep 1"
 bindsym $mod+z exec wofi --show drun
 bindsym $mod+n exec thunar
 bindsym $mod+Shift+n exec ghostty -e vifm
 bindsym $mod+d exec emacs
+
+# C'est pouvoir desac ou réac l'écran interne du pc 
 bindsym $mod+Shift+x exec swaymsg output eDP-1 disable
 bindsym $mod+Shift+w exec swaymsg output eDP-1 enable
 

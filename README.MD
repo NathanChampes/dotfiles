@@ -15,9 +15,11 @@ Le dépôt inclut les configurations pour :
 - **Tmux** (`tmux`) — Multiplexeur de terminal
 - **Sway** (`sway`) — Gestionnaire de fenêtres Wayland
 - **Kitty** (`kitty`) — Émulateur de terminal
+- **Ghostty** (`ghostty`) — Émulateur de terminal que j'ai voulu test
 - **Waybar** (`waybar`) — Barre de statut pour Wayland
 - **Wofi** (`wofi`) — Lanceur d'applications pour Wayland
 - **Wallpaper** (`wallpaper`) — Mes fonds d'écran personnels 
+- **Zsh** (`zshrc`) — Ma configuration de z shell  
 
 ---
 
@@ -56,6 +58,12 @@ Ma configuration Sway change très régulièrement, au gré de mes besoins et ex
 Kitty est un émulateur de terminal. Honnêtement, je l’ai choisi uniquement pour son icône de petit chat 🐱.  
 Cela dit, c’est un terminal très complet : je n’ai jamais rencontré de problème ni ressenti le besoin d’en changer.  
 Ma configuration Kitty évolue très peu, car il me convient parfaitement tel qu’il est.
+
+---
+
+### 👻 Ghostty (`ghostty`)
+
+Ghostty est un émulateur de terminal que j'ai voulu test. 
 
 ---
 
