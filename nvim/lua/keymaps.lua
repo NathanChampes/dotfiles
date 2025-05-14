@@ -20,8 +20,9 @@ vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower win
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 -- Juste un petit raccourci pour save
-vim.keymap.set("n", "<C-s>", "<cmd>w<CR>", { desc = "Fait en sorte que Ctrl + S sauvegarde" })
-vim.keymap.set("i", "<C-s>", "<Esc><cmd>w<CR>", { desc = "Fait en sorte que Ctrl + S sauvegarde" })
+-- Pas forcément le mieux de garder cette habitude donc je le désactive
+-- vim.keymap.set("n", "<C-s>", "<cmd>w<CR>", { desc = "Fait en sorte que Ctrl + S sauvegarde" })
+-- vim.keymap.set("i", "<C-s>", "<Esc><cmd>w<CR>", { desc = "Fait en sorte que Ctrl + S sauvegarde" })
 
 -- Juste parce que les claviers français c'est un peu chiant pour les déplacement rapide
 vim.keymap.set("n", "&", "1")
@@ -50,3 +51,6 @@ vim.keymap.set("v", "à", "0")
 vim.keymap.set("n", "<leader>bc", "<cmd>:bd <CR>", { desc = "Fermer le buffer actuel" })
 vim.keymap.set("n", "<leader>bn", "<cmd>:bn <CR>", { desc = "On passe au prochain buffer" })
 vim.keymap.set("n", "<leader>bp", "<cmd>:bp <CR>", { desc = "On passe au buffer précedent" })
+
+-- Pour retourner vers oil.nvim
+vim.keymap.set("n", "-", "<cmd>Oil<CR>", { desc = "J'ai bind le delete pour retourner vers oil.nvim" })

@@ -89,9 +89,10 @@ exec --no-startup-id /usr/libexec/xdg-desktop-portal-wlr
 exec --no-startup-id /usr/libexec/xdg-desktop-portal-gtk
 
 # Autostart applications sur des espaces de travail spécifiques
-exec --no-startup-id swaymsg 'workspace 1:Web; exec zen-browser --restore-session'
-exec --no-startup-id swaymsg 'workspace 2:Nvim; exec ghostty -e tmux'
-exec --no-startup-id swaymsg 'workspace 6:Spotify; exec spotify'
+exec --no-startup-id swaymsg 'workspace 1; exec zen-browser --restore-session'
+exec --no-startup-id swaymsg 'workspace 2; exec ghostty -e tmux'
+exec --no-startup-id swaymsg 'workspace 6; exec spotify'
+exec --no-startup-id swaymsg 'workspace 7; exec beeper'
 
 # Fonds d'écran
 exec_always swaybg -i ~/.config/wallpaper/desktop2.jpg -m fill

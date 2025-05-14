@@ -1,9 +1,5 @@
 return {
 	{
-		"ThePrimeagen/vim-be-good",
-		event = "VeryLazy",
-	},
-	{
 		"folke/trouble.nvim",
 		opts = {},
 		cmd = "Trouble",
@@ -39,16 +35,6 @@ return {
 				desc = "Quickfix List (Trouble)",
 			},
 		},
-	},
-	{
-		"goolord/alpha-nvim",
-		config = function()
-			require("alpha").setup(require("alpha.themes.dashboard").config)
-		end,
-	},
-	{
-		"OXY2DEV/markview.nvim",
-		lazy = false,
 	},
 	{
 		"folke/zen-mode.nvim",
