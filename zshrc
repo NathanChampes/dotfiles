@@ -190,6 +190,7 @@ export GO111MODULE=on;
 
 # pour symfony 
 export PATH="/usr/local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 # je sais pas trop pourquoi faire
 
@@ -278,3 +279,7 @@ dotfiles() {
 alias gitdotfiles='cd ~/projects/dotfiles/ && ./getAndCommit.sh'
 
 alias tmx='~/script/tmux_session.sh'
+
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+export PATH="$HOME/.pyenv/bin:$PATH"

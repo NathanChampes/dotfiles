@@ -77,7 +77,7 @@ set $ws9 "9"
 set $ws10 "10"
 
 # Autostart de programmes
-exec_always --no-startup-id waybar
+exec_always --no-startup-id ~/.local/bin/start-waybar 
 exec --no-startup-id dex --autostart --environment sway
 exec --no-startup-id nm-applet
 exec --no-startup-id dunst
@@ -103,7 +103,7 @@ workspace_layout default
 
 # Raccourcis pour les applications
 bindsym $mod+Return exec ghostty
-bindsym $mod+a exec "swaymsg kill; sleep 1"
+bindsym $mod+a exec swaymsg kill
 bindsym $mod+z exec wofi --show drun
 bindsym $mod+n exec thunar
 bindsym $mod+Shift+n exec ghostty -e vifm

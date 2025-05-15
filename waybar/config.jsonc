@@ -7,7 +7,9 @@
     "margin-left": 10,
     "margin-right": 10,
     "modules-left": [
-        "sway/workspaces"
+        "sway/workspaces",
+        "image",
+        "custom/mediaplayer"
     ],
     "modules-center": [
         "clock"
@@ -36,7 +38,8 @@
             "▆",
             "▇",
             "█"
-        ]
+        ],
+        "on-click": "notify-send 'CPU Temperature' \"$(sensors | grep 'Package id 0' | awk '{ print $4 }')\""
     },
     "memory": {
         "interval": 30,
@@ -78,7 +81,22 @@
     },
     "clock": {
         "format": "󰥔 {:%H:%M}",
-        "format-alt": "󰃶 {:%d/%m/%Y}"
+        "format-alt": "󰃶 {:%d/%m/%Y}",
+        "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "on-click-right": "mode",
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        }
     },
     "tray": {
         "spacing": 10
@@ -89,5 +107,20 @@
         "interval": 3600,
         "return-type": "json",
         "on-click": "ghostty -e sudo pacman -Syu"
+    },
+    "image": {
+        "path": "/tmp/waybar-mediaplayer-art",
+        "size": 32,
+        "signal": 4
+    },
+    "custom/mediaplayer": {
+        "exec": "$HOME/.config/waybar/waybar-mediaplayer/src/mediaplayer monitor",
+        "return-type": "json",
+        "format": "{}",
+        "on-click": "$HOME/.config/waybar/waybar-mediaplayer/src/mediaplayer play-pause",
+        "on-scroll-up": "$HOME/.config/waybar/waybar-mediaplayer/src/mediaplayer next",
+        "on-scroll-down": "$HOME/.config/waybar/waybar-mediaplayer/src/mediaplayer previous",
+        "min-length": 20,
+        "max-length": 20
     }
 }
