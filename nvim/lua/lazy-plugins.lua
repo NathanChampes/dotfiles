@@ -148,7 +148,9 @@ require("lazy").setup({
 			vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Find by grep" })
 			vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "Find diagnostics" })
 			vim.keymap.set("n", "<leader>fr", builtin.resume, { desc = "Find resume" })
-			vim.keymap.set("n", "<leader>f.", builtin.oldfiles, { desc = 'Find recent files ("." for repeat)' })
+			vim.keymap.set("n", "<leader>f.", function()
+				require("telescope.builtin").find_files({ hidden = true, no_ignore = true })
+			end, { desc = "Find hidden and gitignored files" })
 			vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find in buffers" })
 
 			vim.keymap.set("n", "<leader>sb", function()

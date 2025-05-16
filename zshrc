@@ -283,3 +283,5 @@ alias tmx='~/script/tmux_session.sh'
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 export PATH="$HOME/.pyenv/bin:$PATH"
+
+alias vim="nvim"

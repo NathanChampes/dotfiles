@@ -54,3 +54,6 @@ vim.keymap.set("n", "<leader>bp", "<cmd>:bp <CR>", { desc = "On passe au buffer 
 
 -- Pour retourner vers oil.nvim
 vim.keymap.set("n", "-", "<cmd>Oil<CR>", { desc = "J'ai bind le delete pour retourner vers oil.nvim" })
+
+-- Pour toggle blame
+vim.keymap.set("n", "<leader>lb", "<cmd>:GitBlameToggle <CR>", { desc = "On toggle le blame pour voir qui a commit" })
