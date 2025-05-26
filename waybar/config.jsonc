@@ -15,6 +15,7 @@
         "clock"
     ],
     "modules-right": [
+        "custom/dnd",
         "cpu",
         "memory",
         "battery",
@@ -107,6 +108,13 @@
         "interval": 3600,
         "return-type": "json",
         "on-click": "ghostty -e sudo pacman -Syu"
+    },
+    "custom/dnd": {
+        "format": "{}",
+        "exec": "$HOME/script/dnd_status.sh",
+        "interval": 1,
+        "on-click": "dunstctl set-paused toggle",
+        "return-type": "json"
     },
     "image": {
         "path": "/tmp/waybar-mediaplayer-art",

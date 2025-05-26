@@ -1,3 +1,5 @@
+vim.o.termguicolors = true
+
 vim.opt.guicursor = ""
 -- See `:help vim.opt`
 vim.opt.number = true
@@ -9,7 +11,8 @@ vim.opt.relativenumber = true
 vim.opt.mouse = "a"
 
 -- Bah en gros vu qu'il y a le mode dans statut on le répète pas
-vim.opt.showmode = false
+vim.opt.showmode = true
+vim.opt.showcmd = true
 
 -- On fait en sorte que le presse papier soit global
 vim.schedule(function()
@@ -58,3 +61,8 @@ if vim.fn.argc() > 0 then
 		vim.cmd("cd " .. vim.fn.fnameescape(vim.fn.fnamemodify(first_arg, ":h")))
 	end
 end
+
+local statusline_ascii = ""
+vim.opt.laststatus = 0
+vim.opt.statusline = ""
+vim.opt.ruler = true

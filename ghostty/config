@@ -1,6 +1,5 @@
 background = 000000
 background-opacity = 0.85
-theme = Everforest Dark - Hard
 
 shell-integration-features = no-cursor,no-sudo,no-title
 gtk-titlebar = false

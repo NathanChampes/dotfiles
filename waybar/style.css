@@ -124,6 +124,15 @@ window#waybar {
   transition: all 0.3s ease;
 }
 
+#custom-dnd {
+  margin: 4px 2px;
+  padding: 0 12px;
+  background: rgba(87, 95, 59, 0.5);
+  color: #f0f0f0;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
 @keyframes blink {
   to {
     opacity: 0.5;
