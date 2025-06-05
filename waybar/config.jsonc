@@ -1,134 +1,120 @@
 {
-    "layer": "top",
-    "position": "top",
-    "height": 35,
-    "spacing": 0,
-    "margin-top": 5,
-    "margin-left": 10,
-    "margin-right": 10,
-    "modules-left": [
-        "sway/workspaces",
-        "image",
-        "custom/mediaplayer"
+  "layer": "top",
+  "position": "top",
+  "reload_style_on_change": true,
+  "height": 24,
+  "spacing": 0,
+  "margin-top": 0,
+  "margin-left": 0,
+  "margin-right": 0,
+  "modules-left": [
+    "sway/workspaces",
+    "custom/mediaplayer"
+  ],
+  "modules-center": [],
+  "modules-right": [
+    "custom/dnd",
+    "cpu",
+    "memory",
+    "battery",
+    "network",
+    "wireplumber",
+    "custom/updates",
+    "custom/pywal",
+    "clock"
+  ],
+  "sway/workspaces": {
+    "disable-scroll": false,
+    "format": "{name}"
+  },
+  "cpu": {
+    "interval": 1,
+    "format": "󰻠 {usage:>2}%",
+    "on-click": "notify-send 'CPU Temperature' \"$(sensors | grep 'Package id 0' | awk '{ print $4 }')\""
+  },
+  "memory": {
+    "interval": 30,
+    "format": "󰍛 {used:0.1f}G"
+  },
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15,
+      "full": 100
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": "󰚥 {capacity}%",
+    "format-full": "󰁹 {capacity}%",
+    "format-icons": [
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾"
     ],
-    "modules-center": [
-        "clock"
+    "full-at": 95
+  },
+  "network": {
+    "format-wifi": "󰖩 {essid}",
+    "format-ethernet": "󰈀 {ipaddr}",
+    "format-linked": "󰈀 {ifname}",
+    "format-disconnected": "󰖪",
+    "tooltip-format": "{ifname}: {ipaddr}",
+    "on-click": "nm-connection-editor"
+  },
+  "wireplumber": {
+    "format": "{icon} {volume}%",
+    "format-muted": "󰖁",
+    "format-icons": [
+      "󰕿",
+      "󰖀",
+      "󰕾"
     ],
-    "modules-right": [
-        "custom/dnd",
-        "cpu",
-        "memory",
-        "battery",
-        "wireplumber",
-        "custom/updates",
-        "tray"
-    ],
-    "sway/workspaces": {
-        "disable-scroll": false,
-        "format": "{name}"
-    },
-    "cpu": {
-        "interval": 1,
-        "format": "  {icon0}{icon1}{icon2}{icon3} {usage:>2}%",
-        "format-icons": [
-            "▁",
-            "▂",
-            "▃",
-            "▄",
-            "▅",
-            "▆",
-            "▇",
-            "█"
-        ],
-        "on-click": "notify-send 'CPU Temperature' \"$(sensors | grep 'Package id 0' | awk '{ print $4 }')\""
-    },
-    "memory": {
-        "interval": 30,
-        "format": "  {used:0.1f}G/{total:0.1f}G"
-    },
-    "battery": {
-        "states": {
-            "warning": 30,
-            "critical": 15,
-            "full": 100
-        },
-        "format": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-full": " ",
-        "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            ""
-        ],
-        "full-at": 95
-    },
-    "wireplumber": {
-        "format": "{icon} {volume}%",
-        "format-muted": "󰝟",
-        "format-icons": [
-            "󰕿",
-            "󰖀",
-            "󰕾"
-        ],
-        "max-volume": 150,
-        "scroll-step": 0.2,
-        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-        "ignored-sinks": [
-            "Easy Effects Sink"
-        ]
-    },
-    "clock": {
-        "format": "󰥔 {:%H:%M}",
-        "format-alt": "󰃶 {:%d/%m/%Y}",
-        "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
-        "calendar": {
-            "mode": "month",
-            "mode-mon-col": 3,
-            "weeks-pos": "right",
-            "on-scroll": 1,
-            "on-click-right": "mode",
-            "format": {
-                "months": "<span color='#ffead3'><b>{}</b></span>",
-                "days": "<span color='#ecc6d9'><b>{}</b></span>",
-                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
-                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
-            }
-        }
-    },
-    "tray": {
-        "spacing": 10
-    },
-    "custom/updates": {
-        "format": "{}",
-        "exec": "$HOME/.config/waybar/scripts/updates.sh",
-        "interval": 3600,
-        "return-type": "json",
-        "on-click": "ghostty -e sudo pacman -Syu"
-    },
-    "custom/dnd": {
-        "format": "{}",
-        "exec": "$HOME/script/dnd_status.sh",
-        "interval": 1,
-        "on-click": "dunstctl set-paused toggle",
-        "return-type": "json"
-    },
-    "image": {
-        "path": "/tmp/waybar-mediaplayer-art",
-        "size": 32,
-        "signal": 4
-    },
-    "custom/mediaplayer": {
-        "exec": "$HOME/.config/waybar/waybar-mediaplayer/src/mediaplayer monitor",
-        "return-type": "json",
-        "format": "{}",
-        "on-click": "$HOME/.config/waybar/waybar-mediaplayer/src/mediaplayer play-pause",
-        "on-scroll-up": "$HOME/.config/waybar/waybar-mediaplayer/src/mediaplayer next",
-        "on-scroll-down": "$HOME/.config/waybar/waybar-mediaplayer/src/mediaplayer previous",
-        "min-length": 20,
-        "max-length": 20
+    "max-volume": 150,
+    "scroll-step": 0.2,
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "ignored-sinks": [
+      "Easy Effects Sink"
+    ]
+  },
+  "clock": {
+    "format": "󰥔 {:%H:%M}",
+    "format-alt": "󰸗 {:%d/%m/%Y}",
+    "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "on-click-right": "mode",
+      "format": {
+        "months": "<span color='#d3c6aa'><b>{}</b></span>",
+        "days": "<span color='#7fbbb3'><b>{}</b></span>",
+        "weeks": "<span color='#a7c080'><b>W{}</b></span>",
+        "weekdays": "<span color='#dbbc7f'><b>{}</b></span>",
+        "today": "<span color='#e67e80'><b><u>{}</u></b></span>"
+      }
     }
+  },
+  "custom/updates": {
+    "format": "{}",
+    "exec": "$HOME/.config/waybar/scripts/updates.sh",
+    "interval": 3600,
+    "return-type": "json",
+    "on-click": "ghostty -e sudo pacman -Syu"
+  },
+  "custom/dnd": {
+    "format": "󰂞",
+    "interval": 1,
+    "on-click": "swaync-client -t -sw",
+    "return-type": "json"
+  },
+  "custom/mediaplayer": {
+    "format": "{}",
+    "max-length": 50,
+    "exec": "$HOME/.config/waybar/scripts/media.sh",
+    "exec-if": "playerctl status 2>/dev/null",
+    "interval": 1
+  }
 }

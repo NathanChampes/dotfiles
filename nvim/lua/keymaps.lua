@@ -31,3 +31,7 @@ vim.keymap.set("n", "-", "<cmd>Oil<CR>", { desc = "J'ai bind le delete pour reto
 
 -- Pour toggle blame
 vim.keymap.set("v", "<leader>lb", "<cmd>:GitBlameToggle <CR>", { desc = "On toggle le blame pour voir qui a commit" })
+
+vim.keymap.set("n", "<leader>ct", function()
+	require("cloak").toggle()
+end, { desc = "Toggle Cloak" })

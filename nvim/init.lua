@@ -1,5 +1,6 @@
 ---@diagnostic disable-next-line: undefined-global
 local vim = vim
+vim.env.PATH = vim.env.PATH .. ":/etc/profiles/per-user/manchoy/bin"
 
 -- Bon la en gros on dit que le <leader> est espace
 vim.g.mapleader = " "

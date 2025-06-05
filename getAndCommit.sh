@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Copie de mes .dotfiles
 packages=("nvim" "tmux" "sway" "kitty" "waybar" "wofi" "wallpaper" "ghostty")
 for string in "${packages[@]}"; do 

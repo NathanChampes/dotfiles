@@ -3,26 +3,24 @@ set $mod Mod4
 
 # Apparence et configuration générale
 font pango:monospace 8
-corner_radius 10
+corner_radius 7
 default_border pixel 4
 default_floating_border pixel 2
-gaps inner 4
-gaps outer 2
+gaps inner 8
+gaps outer 6
 smart_borders on
 blur enable
+seat * xcursor_theme Bibata-Modern-Classic 24
 
-# Schéma de couleurs
-set $dark_slate #344539
-set $dark_moss #575F3B
-set $chamoisee #9C775B
-set $sage #BBC1A0
-set $lion #A89172
+# Import des couleurs pywal
+include ~/.cache/wal/colors-sway
 
-# Couleurs des fenêtres
-client.focused          #a7c080 #a7c080 #d8caac #a7c080 #a7c080
-client.focused_inactive #3a4b46 #3a4b46 #d3c6aa #3a4b46 #3a4b46
-client.unfocused        #3a4b46 #3a4b46 #d3c6aa #3a4b46 #3a4b46
-client.urgent           #e67e80 #e67e80 #d8caac #e67e80 #e67e80
+# Couleurs des fenêtres utilisant pywal
+client.focused          $color4 $color4 $foreground $color4 $color4
+client.focused_inactive $color8 $color8 $foreground $color8 $color8
+client.unfocused        $color0 $color0 $color7 $color0 $color0
+client.urgent           $color1 $color1 $foreground $color1 $color1
+exec systemctl --user start fix-www-perms.service
 
 # Configuration des périphériques d'entrée
 input * {
@@ -77,25 +75,25 @@ set $ws9 "9"
 set $ws10 "10"
 
 # Autostart de programmes
-exec_always --no-startup-id ~/.local/bin/start-waybar 
+exec_always waybar 
 exec --no-startup-id dex --autostart --environment sway
 exec --no-startup-id nm-applet
-exec --no-startup-id dunst
-exec --no-startup-id xautolock -corners -000 -time 10 -locker 'swaylock -c 344539' &
+exec --no-startup-id swaync
+exec --no-startup-id xautolock -corners -000 -time 10 -locker 'swaylock -c $color0' &
 exec --no-startup-id /usr/bin/emacs --daemon
 exec --no-startup-id dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec --no-startup-id /usr/libexec/xdg-desktop-portal
 exec --no-startup-id /usr/libexec/xdg-desktop-portal-wlr
 exec --no-startup-id /usr/libexec/xdg-desktop-portal-gtk
 
-# Autostart applications sur des espaces de travail spécifiques
-exec --no-startup-id swaymsg 'workspace 1; exec zen-browser --restore-session'
-exec --no-startup-id swaymsg 'workspace 2; exec ghostty -e tmux'
-exec --no-startup-id swaymsg 'workspace 6; exec spotify'
-exec --no-startup-id swaymsg 'workspace 7; exec beeper'
+# Initialisation pywal au démarrage
+exec_always --no-startup-id wal -i "/home/manchoy/.config/wallpaper/bear.jpg" -t -s -e
 
-# Fonds d'écran
-exec_always swaybg -i ~/.config/wallpaper/desktop2.jpg -m fill
+# Autostart applications sur des espaces de travail spécifiques
+exec --no-startup-id swaymsg 'workspace 1; exec firefox'
+exec --no-startup-id swaymsg 'workspace 2; exec ghostty -e tmux'
+exec --no-startup-id swaymsg 'workspace 6; exec ghostty -e ncspot'
+exec --no-startup-id swaymsg 'workspace 7; exec beeper'
 
 # Paramètres par défaut
 floating_modifier $mod
@@ -106,8 +104,11 @@ bindsym $mod+Return exec ghostty
 bindsym $mod+a exec swaymsg kill
 bindsym $mod+z exec wofi --show drun
 bindsym $mod+n exec thunar
-bindsym $mod+Shift+n exec ghostty -e vifm
+bindsym $mod+Shift+n exec swaync-client -t -sw
 bindsym $mod+d exec emacs
+
+# Changer wallpaper et recharger automatiquement
+bindsym $mod+Shift+p exec find ~/Images/Wallpapers -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.webp" \) | wofi --dmenu --prompt "Wallpaper:" | xargs -I {} sh -c 'wal -i "{}" && swaymsg reload'
 
 # C'est pouvoir desac ou réac l'écran interne du pc 
 bindsym $mod+Shift+x exec swaymsg output eDP-1 disable
@@ -183,7 +184,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Capture d'écran
-bindsym $mod+Shift+s exec grim -g "$(slurp)" - | tee ~/Images/Screen/screenshot-$(date +'%Y%m%d-%H%M%S').png | wl-copy
+bindsym $mod+Shift+s exec mkdir -p ~/Images/Screen && grim -g "$(slurp)" - | tee ~/Images/Screen/screenshot-$(date +'%Y%m%d-%H%M%S').png | wl-copy && notify-send "📋 Screenshot Capturé";
 
 # Je veux juste pouvoir enlever ou ajouter la waybar sur demande
 bindsym $mod+KP_Add exec waybar &; 
@@ -199,3 +200,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # Contrôle de la luminosité
 bindsym XF86MonBrightnessDown exec brightnessctl s 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl s +5%
+
+for_window [app_id="waybar"] {
+    blur enable
+}

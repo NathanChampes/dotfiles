@@ -1,136 +1,112 @@
+@import url("/home/manchoy/.cache/wal/colors-waybar.css");
+
 * {
   font-family: "JetBrains Mono Nerd Font", sans-serif;
   font-size: 13px;
+  border: none;
   border-radius: 0;
+  margin: 0;
+  padding: 0;
 }
 
 window#waybar {
-  background: rgba(52, 69, 57, 0);
-  border-bottom: 2px solid rgba(187, 193, 160, 0);
+  background: alpha(@background, 0.85);
+  color: @foreground;
+  border-bottom: 1px solid @color8;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 #workspaces {
-  margin: 4px 3px;
-  border-radius: 8px;
-  background: rgba(87, 95, 59, 0.5);
-  padding: 0 8px;
+  background: transparent;
 }
 
 #workspaces button {
-  padding: 0 8px;
-  margin: 4px 2px;
-  color: #f0f0f0;
+  padding: 0 10px;
+  margin: 0;
+  color: @foreground;
+  background: transparent;
   border: none;
-  border-radius: 6px;
-  transition: all 0.3s ease;
-}
-
-#workspaces button.visible {
-  color: #ffffff;
+  transition: all 0.2s ease;
 }
 
 #workspaces button.focused {
-  background: linear-gradient(45deg, #575f3b, #9c775b);
-  color: #e8e9e3;
-  font-weight: bold;
-  box-shadow: 0 0 8px rgba(187, 193, 160, 0.2);
-}
-
-#workspaces button.urgent {
-  background: rgba(255, 85, 85, 0.3);
-  color: #ff5555;
+  background: @color6;
+  color: @background;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 #workspaces button:hover {
-  background: rgba(168, 145, 114, 0.2);
-  color: #bbc1a0;
+  background: @color8;
+  color: @background;
+}
+
+#workspaces button.urgent {
+  background: @color9;
+  color: @background;
 }
 
 #cpu,
 #memory,
-#disk,
-#temperature,
 #battery,
 #network,
 #wireplumber,
 #clock,
-#tray {
-  margin: 4px 2px;
+#custom-updates,
+#custom-dnd,
+#custom-pywal {
   padding: 0 12px;
-  background: rgba(87, 95, 59, 0.5);
-  color: #f0f0f0;
-  border-radius: 8px;
-  transition: all 0.3s ease;
+  background: transparent;
+  color: @foreground;
+  border-left: 1px solid @color3;
+}
+
+#cpu {
+  color: @foreground;
+}
+
+#memory {
+  color: @foreground;
+}
+
+#network {
+  color: @foreground;
+}
+
+#wireplumber {
+  color: @foreground;
+}
+
+#clock {
+  color: @foreground;
+  font-weight: bold;
 }
 
 #battery.charging {
-  color: #575f3b;
+  color: @color10;
 }
 
 #battery.warning {
-  color: #9c775b;
+  color: @color11;
 }
 
 #battery.critical {
-  color: #a89172;
+  color: @color9;
   animation: blink 1s infinite;
 }
 
-#battery.full {
-  background: transparent;
-  padding: 0;
-  margin: 0;
-  border: none;
-  min-width: 0;
-  opacity: 0;
-}
-
-#battery.full,
-#battery.full * {
-  min-width: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background: none;
-  color: transparent;
-  opacity: 0;
-  font-size: 0;
-}
-
 #network.disconnected {
-  color: #9c775b;
+  color: @color9;
 }
 
 #custom-power {
-  margin: 4px 4px;
   padding: 0 12px;
-  background: rgba(156, 119, 91, 0.3);
-  color: #9c775b;
-  border-radius: 8px;
-  transition: all 0.3s ease;
+  background: @color5;
+  color: @background;
+  border-left: 1px solid @color8;
 }
 
 #custom-power:hover {
-  background: #9c775b;
-  color: #344539;
-}
-
-#custom-updates {
-  margin: 4px 2px;
-  padding: 0 12px;
-  background: rgba(87, 95, 59, 0.5);
-  color: #f0f0f0;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-}
-
-#custom-dnd {
-  margin: 4px 2px;
-  padding: 0 12px;
-  background: rgba(87, 95, 59, 0.5);
-  color: #f0f0f0;
-  border-radius: 8px;
-  transition: all 0.3s ease;
+  background: @color13;
 }
 
 @keyframes blink {
@@ -140,18 +116,41 @@ window#waybar {
 }
 
 #custom-mediaplayer {
-  margin: 4px 2px;
-  padding: 0 12px;
-  background: rgba(87, 95, 59, 0.5);
-  color: #f0f0f0;
-  border-radius: 8px;
-  font-size: 13px;
-  transition: all 0.3s ease;
+  padding: 0 15px;
+  background: transparent;
+  color: @foreground;
+  border-left: 1px solid @color8;
+  font-weight: 500;
+  min-width: 200px;
 }
 
 #custom-mediaplayer:hover {
-  background: rgba(168, 145, 114, 0.2);
-  color: #bbc1a0;
+  background: @color1;
+  color: @background;
 }
 
-@import "./waybar-mediaplayer/src/style.css";
+#custom-mediaplayer.Playing {
+  color: @color10;
+}
+
+#custom-mediaplayer.Paused {
+  color: @color11;
+}
+
+#custom-pywal {
+  color: @foreground;
+  font-weight: bold;
+}
+
+#custom-pywal:hover {
+  background: @color4;
+  color: @background;
+}
+
+#custom-updates {
+  color: @foreground;
+}
+
+#custom-dnd {
+  color: @foreground;
+}
