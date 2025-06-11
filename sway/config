@@ -20,7 +20,9 @@ client.focused          $color4 $color4 $foreground $color4 $color4
 client.focused_inactive $color8 $color8 $foreground $color8 $color8
 client.unfocused        $color0 $color0 $color7 $color0 $color0
 client.urgent           $color1 $color1 $foreground $color1 $color1
+
 exec systemctl --user start fix-www-perms.service
+exec --no-startup-id xrdb -merge ~/.Xresources
 
 # Configuration des périphériques d'entrée
 input * {
@@ -87,7 +89,7 @@ exec --no-startup-id /usr/libexec/xdg-desktop-portal-wlr
 exec --no-startup-id /usr/libexec/xdg-desktop-portal-gtk
 
 # Initialisation pywal au démarrage
-exec_always --no-startup-id wal -i "/home/manchoy/.config/wallpaper/bear.jpg" -t -s -e
+exec_always --no-startup-id wal -i "/home/manchoy/.config/wallpaper/bear.jpg" -t -s -e && ~/projects/scripts/autoncspot.sh
 
 # Autostart applications sur des espaces de travail spécifiques
 exec --no-startup-id swaymsg 'workspace 1; exec firefox'
@@ -103,12 +105,12 @@ workspace_layout default
 bindsym $mod+Return exec ghostty
 bindsym $mod+a exec swaymsg kill
 bindsym $mod+z exec wofi --show drun
-bindsym $mod+n exec thunar
+bindsym $mod+n exec dolphin
 bindsym $mod+Shift+n exec swaync-client -t -sw
 bindsym $mod+d exec emacs
 
 # Changer wallpaper et recharger automatiquement
-bindsym $mod+Shift+p exec find ~/Images/Wallpapers -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.webp" \) | wofi --dmenu --prompt "Wallpaper:" | xargs -I {} sh -c 'wal -i "{}" && swaymsg reload'
+bindsym $mod+Shift+p exec find ~/.config/wallpaper -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.webp" \) | wofi --dmenu --prompt "Wallpaper:" | xargs -I {} sh -c 'wal -i "{}" && swaymsg reload'
 
 # C'est pouvoir desac ou réac l'écran interne du pc 
 bindsym $mod+Shift+x exec swaymsg output eDP-1 disable

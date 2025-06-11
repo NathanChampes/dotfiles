@@ -37,7 +37,7 @@ window#waybar {
 
 #workspaces button:hover {
   background: @color8;
-  color: @background;
+  color: transparent;
 }
 
 #workspaces button.urgent {
@@ -125,7 +125,7 @@ window#waybar {
 }
 
 #custom-mediaplayer:hover {
-  background: @color1;
+  background: @color8;
   color: @background;
 }
 

@@ -1,7 +1,17 @@
 #!/usr/bin/env bash
 
-current=$(nix profile list | grep -c '^0')
+cd ~/projects/nixcfg || exit 1
 
-updates=$(nix profile upgrade --dry-run 2>/dev/null | grep -c 'would upgrade')
+cp flake.lock flake.lock.bak
 
-echo "{\"text\": \"󰚰 $updates\", \"tooltip\": \"$updates mises à jour disponibles\"}"
+nix flake update 2>/dev/null
+
+if git diff --no-index --quiet flake.lock.bak flake.lock; then
+    updates=0
+else
+    updates=1
+fi
+
+mv flake.lock.bak flake.lock
+
+echo "{\"text\": \"󰚰 $updates\", \"tooltip\": \"$updates mise(s) à jour disponible(s) dans le flake système\"}"

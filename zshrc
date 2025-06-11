@@ -11,6 +11,7 @@ bindkey -v
 path+="$HOME/.zsh/plugins/zsh-history-substring-search"
 fpath+="$HOME/.zsh/plugins/zsh-history-substring-search"
 
+
 autoload -U compinit && compinit
 source /nix/store/81s1mpv0x9r9p18xsp68h2083aipkmvq-zsh-autosuggestions-0.7.1/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_STRATEGY=(history)
@@ -43,8 +44,9 @@ if [[ $options[zle] = on ]]; then
   source <(/nix/store/z3ayhjslz72ldiwrv3mn5n7rs96p2g8a-fzf-0.62.0/bin/fzf --zsh)
 fi
 
-if [[ $TERM != "dumb" ]]; then
-  eval "$(/nix/store/sa6y5dghbdj04i4dwz7lxglfk1iafdci-starship-1.23.0/bin/starship init zsh)"
+# Lance automatiquement sway on load
+if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
+  exec sway
 fi
 
 # Configuration des options Zsh
@@ -130,16 +132,8 @@ gitdotfiles() {
   cd ~/projects/dotfiles/ && ./getAndCommit.sh
 }
 
-tmx() {
-  ~/script/tmux_session.sh
-}
-
-servdev() {
-  sshfs -o password_stdin siteweb@193.70.90.72:/home/siteweb ~/projects/mnt/digidoc < ~/.sshfs_pass
-}
-
 envDigidoc() {
-  ~/script/sync_env.sh
+  ~/projects/scripts/sync_env.sh
 }
 
 # Complétion Docker si disponible
@@ -167,13 +161,21 @@ if command -v pyenv >/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
+if [[ $TERM != "dumb" ]]; then
+  eval "$(/nix/store/sa6y5dghbdj04i4dwz7lxglfk1iafdci-starship-1.23.0/bin/starship init zsh)"
+fi
+
 alias -- ..='cd ..'
 alias -- ...='cd ../..'
 alias -- ....='cd ../../..'
+alias -- boosteroid-install=install-boosteroid
+alias -- boosteroid-logs='journalctl --user -f | grep -i boosteroid'
+alias -- boosteroid-remove=uninstall-boosteroid
 alias -- dev='cd ~/projects/Digidoc && vim .'
 alias -- g=git
 alias -- k=kubectl
 alias -- ll='ls -lah'
+alias -- logs='sudo tail -f /var/log/httpd/error-localhost.log'
 alias -- neovim=nvim
 alias -- reload='home-manager switch'
 alias -- sudonvim='sudo -E nvim'
