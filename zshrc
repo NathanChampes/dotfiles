@@ -155,6 +155,7 @@ export PATH="$HOME/.local/share/mise/shims:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.pyenv/bin:$PATH"
+export NIX_PATH=nixpkgs=channel:nixos-unstable
 
 # Initialisation pyenv si disponible
 if command -v pyenv >/dev/null 2>&1; then
@@ -172,6 +173,11 @@ alias -- boosteroid-install=install-boosteroid
 alias -- boosteroid-logs='journalctl --user -f | grep -i boosteroid'
 alias -- boosteroid-remove=uninstall-boosteroid
 alias -- dev='cd ~/projects/Digidoc && vim .'
+alias -- doom='$HOME/.emacs.d/bin/doom'
+alias -- ec='emacsclient -c -a emacs'
+alias -- emacs-daemon='emacs --daemon'
+alias -- emacs-debug='emacs --debug-init'
+alias -- et='emacsclient -t -a emacs'
 alias -- g=git
 alias -- k=kubectl
 alias -- ll='ls -lah'

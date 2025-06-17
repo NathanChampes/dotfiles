@@ -97,6 +97,9 @@ exec --no-startup-id swaymsg 'workspace 2; exec ghostty -e tmux'
 exec --no-startup-id swaymsg 'workspace 6; exec ghostty -e ncspot'
 exec --no-startup-id swaymsg 'workspace 7; exec beeper'
 
+# Configuration par défaut des applications
+for_window [app_id="swayimg"] floating enable
+
 # Paramètres par défaut
 floating_modifier $mod
 workspace_layout default
@@ -105,7 +108,7 @@ workspace_layout default
 bindsym $mod+Return exec ghostty
 bindsym $mod+a exec swaymsg kill
 bindsym $mod+z exec wofi --show drun
-bindsym $mod+n exec dolphin
+bindsym $mod+n exec ghostty -e yazi
 bindsym $mod+Shift+n exec swaync-client -t -sw
 bindsym $mod+d exec emacs
 
